@@ -17,10 +17,13 @@ resource "azurerm_firewall" "azure_firewall" {
         subnet_id            = var.ip_configuration.subnet_id
         public_ip_address_id = var.ip_configuration.public_ip_address_id
     }
-    management_ip_configuration {
+    dynamic management_ip_configuration {
+        for_each = var.management_ip_configuration != null ? [1] : []
+        content {
         name                 = var.management_ip_configuration.name
         subnet_id            = var.management_ip_configuration.subnet_id
         public_ip_address_id = var.management_ip_configuration.public_ip_address_id
+    }
     }
     dynamic virtual_hub {
         for_each = var.virtual_hub != null ? [1] : []

@@ -69,6 +69,7 @@ variable "management_ip_configuration" {
       public_ip_address_id = string
     })
   description = "A management_ip_configuration block as defined below."
+  default = null
 }
 
 variable "virtual_hub" {
