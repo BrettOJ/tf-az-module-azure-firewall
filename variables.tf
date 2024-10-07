@@ -78,7 +78,6 @@ variable "virtual_hub" {
     })
   description = "A virtual_hub block as defined below."
   default = null
-  
 }
 
 variable "naming_convention_info" {

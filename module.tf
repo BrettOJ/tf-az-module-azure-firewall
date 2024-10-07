@@ -22,8 +22,11 @@ resource "azurerm_firewall" "azure_firewall" {
         subnet_id            = var.management_ip_configuration.subnet_id
         public_ip_address_id = var.management_ip_configuration.public_ip_address_id
     }
-    virtual_hub {
-        virtual_hub_id   = var.virtual_hub.virtual_hub_id
-        public_ip_count  = var.virtual_hub.public_ip_count
+    dynamic virtual_hub {
+        for_each = var.virtual_hub != null ? [1] : []
+        content {
+            virtual_hub_id   = var.virtual_hub.virtual_hub_id
+            public_ip_count  = var.virtual_hub.public_ip_count
+        }
     }
 }
