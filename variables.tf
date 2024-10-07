@@ -77,6 +77,7 @@ variable "virtual_hub" {
       public_ip_count = number
     })
   description = "A virtual_hub block as defined below."
+  default = null
   
 }
 
